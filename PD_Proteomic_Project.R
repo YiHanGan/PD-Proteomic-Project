@@ -2,7 +2,7 @@ library(tidyr)
 library(dplyr)
 library(data.table)
 setwd("/work/PD_Proteomics/PrimaryDATA/")
-df=as.data.frame(fread("V4_Proteomic_incident_PD_1112.csv")) #蛋白加covariate加AD
+df=as.data.frame(fread("V4_Proteomic_incident_PD_1112.csv")) 
 df=df[-1]
 ProteinSuppInfo <- as.data.frame(fread("ProteinSuppInfo.csv")) 
 Protein <- left_join(Protein,ProteinSuppInfo,by="eid")
@@ -48,7 +48,7 @@ Protein2$PD_y[which(!Protein2$eid%in%eid5)]=0
 Protein3=Protein
 Protein3=Protein[-which(Protein$eid%in%c(eid5)),]
 
-## 循环单因素cox(改一些变量名称)
+## 循环单因素cox
 library(survival)
 Uni_glm_model=
   function(x){
